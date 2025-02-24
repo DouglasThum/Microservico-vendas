@@ -25,7 +25,7 @@ public class Cliente {
 	
 	@Id
 	@Schema(description = "Identificador único")
-	private Long id;
+	private String id;
 	
 	@NotNull
 	@Size(min = 1, max = 50)
