@@ -6,14 +6,25 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
-
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-public class Venda {
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
+@Document(collection = "venda")
+@Getter
+@Setter
+@AllArgsConstructor
+@Builder
+public class Venda {
+	
 	public enum Status {
 		INICIADA, CONCLUIDA, CANCELADA;
 
@@ -51,6 +62,7 @@ public class Venda {
 	public Venda() {
 		produtos = new HashSet<>();
 	}
+
 
 	public void adicionarProduto(Produto produto, Integer quantidade) {
 		validarStatus();
@@ -110,6 +122,7 @@ public class Venda {
 	}
 	
 	public void recalcularValorTotalVenda() {
+		//validarStatus();
 		BigDecimal valorTotal = BigDecimal.ZERO;
 		for (ProdutoQuantidade prod : this.produtos) {
 			valorTotal = valorTotal.add(prod.getValorTotal());
