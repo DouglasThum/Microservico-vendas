@@ -16,7 +16,7 @@ public class OpenAPIConfig {
 	public OpenAPI customOpenAPI(@Value("${application-version}") String appVersion) {
 		return new OpenAPI()
 				          .info(new Info()
-				          .title("Serviço de clientes")
+				          .title("Serviço de produtos")
 				          .version(appVersion)
 				          .description("Serviço para gerenciamento de clientes")
 				          .termsOfService("http://swagger.io/terms/")
