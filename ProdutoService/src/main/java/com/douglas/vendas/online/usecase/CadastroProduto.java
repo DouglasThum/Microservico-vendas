@@ -1,6 +1,7 @@
 package com.douglas.vendas.online.usecase;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.douglas.vendas.online.domain.Produto;
 import com.douglas.vendas.online.domain.Produto.Status;
@@ -9,6 +10,7 @@ import com.douglas.vendas.online.repository.IProdutoRepository;
 
 import jakarta.validation.Valid;
 
+@Service
 public class CadastroProduto {
 	
 	private IProdutoRepository produtoRepository;
