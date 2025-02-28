@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8080
   wait-time-in-ms-when-sync-empty: 3000
 
 spring:
@@ -8,9 +8,22 @@ spring:
       active: native
   data:
       mongodb:
-        uri: mongodb://localhost:27017
+        host: ${MONGODB_URL}
         database: cliente
         auto-index-creation: true
-        authentication-mechanism: NONE
-
+eureka:
+  instance:
+    hostname: ${DISCOVERY_HOST:localhost}
+    port: 9091
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 application-version: 1.0
+        
